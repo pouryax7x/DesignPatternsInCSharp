@@ -14,6 +14,7 @@ using DesignPatterns.Mediator;
 using DesignPatterns.Memento;
 using DesignPatterns.Observer;
 using DesignPatterns.Observer.Pull;
+using DesignPatterns.Proxy;
 using DesignPatterns.State;
 using DesignPatterns.Strategy;
 using DesignPatterns.Template;
@@ -159,7 +160,7 @@ namespace DesignPatterns
             //Facade
 
             var notificationService = new NotificationService();
-            notificationService.Send("hi" , "target");
+            notificationService.Send("hi", "target");
 
             //FlyWeight
 
@@ -174,6 +175,18 @@ namespace DesignPatterns
             var remoteControl = new AdvancedRemoteControl(new SonyTV());
             var remoteControl1 = new RemoteControl(new SonyTV());
             remoteControl.TurnOn();
+
+            //Proxy
+
+            var library = new Library();
+            string[] filenames = { "a", "b", "c" };
+            foreach (var filename in filenames)
+            {
+                library.Add(new LoggingEbookProxy(filename));
+            }
+            library.OpenEbook("a");
+            library.OpenEbook("b");
+
         }
     }
 }
