@@ -1,6 +1,7 @@
 ﻿using System;
 using DesignPatterns.Adapter;
 using DesignPatterns.Adapter.AvaFilter;
+using DesignPatterns.Bridge;
 using DesignPatterns.ChainOfResposibility;
 using DesignPatterns.Command;
 using DesignPatterns.Command.Editor;
@@ -167,6 +168,12 @@ namespace DesignPatterns
             {
                 point.draw();
             }
+
+            //Bridge
+
+            var remoteControl = new AdvancedRemoteControl(new SonyTV());
+            var remoteControl1 = new RemoteControl(new SonyTV());
+            remoteControl.TurnOn();
         }
     }
 }
